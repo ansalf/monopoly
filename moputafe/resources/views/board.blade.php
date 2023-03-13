@@ -2,309 +2,807 @@
 <html lang="en">
 
 <head>
-    <script src="https://kit.fontawesome.com/5646030e11.js" crossorigin="anonymous"></script>
-    <link rel="stylesheet" href="resources/css/board.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>MOPUTA</title>
     <style>
-        #boardgame {
-            position: fixed;
-            left: 33.3%;
-            right: 33.3%;
-            top: 20px;
-            width: 597px;
-            height: 597px;
+        * {
+            box-sizing: border-box;
         }
 
-        #board {
-            height: inherit;
-            width: inherit;
-            background-color: #ecfcf4;
+        body {
+            margin: 0;
+            background-image: "white";
+            background-position: center;
+            background-repeat: repeat;
+            background-size: 100px;
+            font-family: "Oswald", sans-serif;
+            font-weight: 400;
+            font-size: 10px;
+            color: #080808;
+            text-transform: uppercase;
         }
 
-        #top {
-            display: block;
-            direction: ltr;
-            height: 60px;
+        h1,
+        h2,
+        h3,
+        h4,
+        h5,
+        h6 {
+            margin: 0;
         }
 
-        #left {
-            display: flex;
-            height: 60px;
-            width: 476px;
-            -webkit-transform: rotate(-90deg);
-            -moz-transform: rotate(-90deg);
-            -o-transform: rotate(-90deg);
-            -ms-transform: rotate(-90deg);
-            transform: rotate(-90deg);
-            position: absolute;
-            left: -208px;
-            top: 268px;
+        .dark-purple {
+            background: #5e3577;
         }
 
-        #bottom {
-            display: flex;
-            direction: ltr;
-            height: 60px;
-            position: absolute;
-            bottom: 0px;
-            -webkit-transform: rotate(180deg);
-            -moz-transform: rotate(180deg);
-            -o-transform: rotate(180deg);
-            -ms-transform: rotate(180deg);
+        .light-blue {
+            background: #d2eaf5;
+        }
+
+        .purple {
+            background: #b02f7c;
+        }
+
+        .orange {
+            background: #fa811d;
+        }
+
+        .red {
+            background: #f50c2b;
+        }
+
+        .yellow {
+            background: #ffed20;
+        }
+
+        .green {
+            background: #41994e;
+        }
+
+        .dark-blue {
+            background: #5a6dba;
+        }
+
+        .table {
+            padding-left: 50px;
+            padding-right: 50px;
+        }
+
+        .board {
+            display: grid;
+            grid-template-columns: 125px repeat(9, 80px) 125px;
+            grid-template-rows: 125px repeat(9, 80px) 125px;
+            grid-gap: 2px;
+            margin: 50px auto;
+            width: 994px;
+            height: 994px;
+            background: #080808;
+            border: 2px solid #080808;
+        }
+
+        .center {
+            grid-column: 2 / 11;
+            grid-row: 2 / 11;
+            background: #fafaf8;
+            display: grid;
+            grid-template-columns: repeat(7, 1fr);
+            grid-template-rows: repeat(7, 1fr);
+            justify-items: center;
+            align-items: center;
+        }
+
+        .title {
+            grid-column: 1 / 9;
+            grid-row: 4;
+            font-size: 90px;
+            font-weight: 400;
+            letter-spacing: 12px;
+        }
+
+        .community-chest-deck {
+            grid-column: 2 / 4;
+            grid-row: 2 / 4;
+            transform: rotate(135deg);
+            margin-bottom: 60px;
+            margin-right: 60px;
+        }
+
+        .chance-deck {
+            grid-column: 5 / 7;
+            grid-row: 5 / 7;
+            transform: rotate(315deg);
+            margin-top: 60px;
+            margin-left: 60px;
+        }
+
+        .label {
+            text-align: center;
+            font-weight: 500;
+            letter-spacing: 3px;
+            padding-bottom: 10px;
+            padding-right: 3px;
+        }
+
+        .deck {
+            border: 2px dashed #080808;
+            width: 160px;
+            height: 120px;
+        }
+
+        .row {
+            display: grid;
+            grid-gap: 2px;
+        }
+
+        .horizontal-row {
+            grid-template-columns: repeat(9, 80px);
+            grid-template-rows: 125px;
+        }
+
+        .vertical-row {
+            grid-template-columns: 125px;
+            grid-template-rows: repeat(9, 80px);
+        }
+
+        .vertical-row .container {
+            top: 50%;
+            left: 50%;
+        }
+
+        .bottom-row {
+            grid-column: 2 / 11;
+            grid-row: 11;
+        }
+
+        .left-row {
+            grid-column: 1;
+            grid-row: 2 / 11;
+        }
+
+        .left-row .container {
+            transform: translate(-50%, -50%) rotate(90deg);
+        }
+
+        .top-row {
+            grid-column: 2 / 11;
+            grid-row: 1;
+        }
+
+        .top-row .container {
             transform: rotate(180deg);
         }
 
-        #right {
+        .right-row {
+            grid-column: 11;
+            grid-row: 2 / 11;
+        }
+
+        .right-row .container {
+            transform: translate(-50%, -50%) rotate(270deg);
+        }
+
+        .space {
+            background: #fafaf8;
+            text-align: center;
+        }
+
+        .space .container {
             display: flex;
-            direction: ltr;
-            height: 60px;
-            -webkit-transform: rotate(90deg);
-            -moz-transform: rotate(90deg);
-            -o-transform: rotate(90deg);
-            -ms-transform: rotate(90deg);
-            transform: rotate(90deg);
-            position: absolute;
-            right: -208px;
-            top: 268px;
-        }
-
-        #logo {
-            display: block;
-            height: 152px;
-            width: 400px;
-            position: absolute;
-            left: 90px;
-            top: 185px;
-            background-image: url("https://upload.wikimedia.org/wikipedia/en/f/f9/Monopoly_pack_logo.png");
-            -webkit-transform: rotate(-45deg);
-            -moz-transform: rotate(-45deg);
-            -o-transform: rotate(-45deg);
-            -ms-transform: rotate(-45deg);
-            transform: rotate(-45deg);
-        }
-
-        #chance {
-            display: block;
+            flex-direction: column;
+            justify-content: space-between;
+            position: relative;
+            transform-origin: center;
             height: 125px;
-            width: 90px;
-            box-shadow: 2px 2px #332f66;
-            -webkit-transform: rotate(45deg);
-            -moz-transform: rotate(45deg);
-            -o-transform: rotate(45deg);
-            -ms-transform: rotate(45deg);
-            transform: rotate(45deg);
-            position: absolute;
-            top: 110px;
-            left: 140px;
-            background-color: #caad50;
+            width: 80px;
         }
 
-        #innerchance {
-            display: table-cell;
-            height: 105px;
-            width: 70px;
-            outline-style: solid;
-            outline-color: #000000;
-            outline-width: 4px;
-            position: absolute;
-            top: 10px;
-            left: 10px;
-            background-color: #caad50;
+        .space .name,
+        .space .instructions {
             text-align: center;
-            vertical-align: middle;
         }
 
-        #cchest {
-            display: block;
-            height: 125px;
-            width: 90px;
-            box-shadow: -2px -2px #332f66;
-            -webkit-transform: rotate(-135deg);
-            -moz-transform: rotate(-135deg);
-            -o-transform: rotate(-135deg);
-            -ms-transform: rotate(-135deg);
-            transform: rotate(-135deg);
-            position: absolute;
-            bottom: 150px;
-            right: 150px;
-            background-color: #ca9ca9;
+        .space .price {
+            font-size: 10px;
+            font-weight: 400;
+            padding-bottom: 5px;
         }
 
-        #innerchest {
-            display: table-cell;
-            height: 105px;
-            width: 70px;
-            outline-style: solid;
-            outline-color: #000000;
-            outline-width: 4px;
-            position: absolute;
-            top: 10px;
-            left: 10px;
+        .corner .container {
+            justify-content: space-around;
+            height: 100%;
+            width: 100%;
+        }
+
+        .corner .name {
+            padding: 0;
+        }
+
+        .property .color-bar {
+            height: 25px;
+            border-bottom: 2px solid #080808;
+        }
+
+        .property .name {
+            padding-bottom: 50px;
+            font-size: 10px;
+        }
+
+        .railroad .name {
+            padding-top: 10px;
+        }
+
+        .railroad .drawing {
+            font-size: 55px;
+            color: #080808;
+        }
+
+        .utility .name {
+            padding-top: 10px;
+        }
+
+        .utility .drawing {
+            font-size: 70px;
+        }
+
+        .fee .name {
+            padding-top: 10px;
             font-size: 14px;
-            background-color: #ca9ca9;
-            text-align: center;
-            vertical-align: middle;
         }
 
-
-        #corners {
-            display: table-cell;
-            filter: brightness(100%);
-            width: 60px;
-            height: 60px;
-            outline-style: solid;
-            outline-color: #000000;
-            outline-width: 1px;
-            text-align: center;
+        .fee .instructions {
             font-size: 10px;
-            color: #000000;
-            vertical-align: middle;
         }
 
-        #houses {
-            display: table-cell;
-            filter: opacity(1);
-            width: 53px;
-            height: 60px;
-            outline-style: solid;
-            outline-color: #000000;
-            outline-width: 1px;
-            text-align: center;
-            font-size: 10px;
-            color: #000000;
-            vertical-align: middle;
+        .go {
+            grid-column: 11;
+            grid-row: 11 / 12;
+            position: relative;
         }
 
-        #colour-bar {
-            filter: opacity(1);
-            height: 10px;
-            outline-style: solid;
-            outline-width: 1px;
+        .go .container {
+            justify-content: flex-start;
+            transform: rotate(315deg);
+        }
+
+        .go .instructions {
+            padding-top: 40px;
+            font-size: 9px;
+        }
+
+        .go .go-word {
+            font-size: 20px;
+            color: #080808;
+        }
+
+        .go .arrow {
+            font-size: 45px;
+            color: #f50c2b;
             position: absolute;
-            bottom: 1px;
-            left: 1px;
-            right: 1px;
+            bottom: -10px;
+            left: 60px;
         }
 
-        #interactions {
-            display: table-cell;
-            filter: opacity(1);
-            width: 53px;
-            height: 60px;
-            outline-style: solid;
-            outline-color: #000000;
-            outline-width: 1px;
-            text-align: center;
+        .jail {
+            grid-column: 1;
+            grid-row: 11 / 12;
+            display: grid;
+            grid-template-columns: repeat(10, 12.5px);
+            grid-template-rows: repeat(10, 12.5px);
+            justify-content: center;
+            align-items: center;
+        }
+
+        .jail .drawing {
+            grid-column: 4 / 11;
+            grid-row: 1 / 8;
+            width: 87.5px;
+            height: 87.5px;
+            background: #fa811d;
+            border-bottom: 2px solid #080808;
+            border-left: 2px solid #080808;
+        }
+
+        .jail .just {
+            grid-column: 3;
+            grid-row: 4;
+            transform: rotate(90deg);
+            padding-top: 25px;
+        }
+
+        .jail .visiting {
+            grid-column: 6;
+            grid-row: 8;
+            padding-top: 25px;
+        }
+
+        .jail .container {
+            align-items: center;
+            transform: rotate(45deg);
+        }
+
+        .jail .name {
+            font-size: 14px;
+        }
+
+        .jail .window {
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+            position: relative;
+            width: 55px;
+            height: 55px;
+            background: #fafaf8;
+            border: 2px solid #080808;
+        }
+
+        .jail .person {
+            position: absolute;
+            transform: translate(-50%, -50%);
+            top: 50%;
+            left: 50%;
+            font-size: 40px;
+        }
+
+        .jail .bar {
+            height: 55px;
+            width: 2px;
+            background: #080808;
+        }
+
+        .free-parking {
+            grid-column: 1;
+            grid-row: 1 / 2;
+        }
+
+        .free-parking .container {
+            justify-content: center;
+            transform: rotate(135deg);
+        }
+
+        .free-parking .name {
+            font-size: 16px;
+        }
+
+        .free-parking .drawing {
+            font-size: 60px;
+            color: #f50c2b;
+            padding-top: 5px;
+            padding-bottom: 5px;
+        }
+
+        .go-to-jail {
+            grid-column: 11;
+            grid-row: 1 / 1;
+        }
+
+        .go-to-jail .container {
+            justify-content: center;
+            transform: rotate(225deg);
+        }
+
+        .go-to-jail .name {
+            font-size: 15px;
+            padding: 2;
+        }
+
+        .go-to-jail .drawing {
+            font-size: 90px;
+            color: #b02f7c;
+            padding-top: 5px;
+            padding-bottom: 5px;
+            transform: rotate(135deg);
+        }
+
+        .chance .container {
+            justify-content: center;
+        }
+
+        .chance .drawing {
+            font-size: 100px;
+            padding-bottom: 0px;
+            color: #f50c2b;
+        }
+
+        .chance .blue {
+            color: #d2eaf5;
+        }
+
+        .community-chest .container {
+            justify-content: space-around;
+        }
+
+        .community-chest .drawing {
+            font-size: 70px;
+            padding-bottom: 10px;
+            color: #d2eaf5;
+        }
+
+        .community-chest .instructions {
+            font-size: 8px;
+        }
+
+        .electric-company .drawing {
+            font-size: 50px;
+            color: #5a6dba;
+        }
+
+        .waterworks .drawing {
+            font-size: 50px;
+            color: #5a6dba;
+        }
+
+        .income-tax .container {
+            justify-content: center;
+            align-items: center;
+        }
+
+        .income-tax .name {
+            padding-bottom: 5px;
+        }
+
+        .income-tax .diamond {
+            width: 5px;
+            height: 5px;
+            background: #080808;
+            transform: rotate(45deg);
+            display: inline-block;
+        }
+
+        .income-tax .instructions {
+            padding-top: 5px;
+            padding-bottom: 5px;
+        }
+
+        .luxury-tax .name {
+            padding-bottom: -10px;
+        }
+
+        .luxury-tax .drawing {
+            padding-top: 5px;
+            font-size: 50px;
+            color: #ffed20;
+        }
+
+        .luxury-tax .instructions {
+            padding-bottom: 5px;
+            padding-top: 30ox;
+            font-size: 8px;
+        }
+
+        .long-name {
+            padding-left: 0 !important;
+            padding-right: 0 !important;
+        }
+
+        .long-railroad {
+            padding-top: 15px;
             font-size: 10px;
-            color: #000000;
-            vertical-align: middle;
+            padding-left: 0px !important;
+            padding-right: 4px !important;
+        }
+
+        .two-line-name {
+            padding-top: 5px;
+            padding-left: 3px !important;
+            padding-right: 3px !important;
+            top: 10px;
         }
     </style>
 </head>
 
 <body>
-    <div id="boardgame">
-        <div id="board">
-            <div id="top">
-                <div id="corners">Free Parking <i class="fas fa-car fa-2"></i></div>
-                <div id="houses">Kentucky Ave<br>$220<div id="colour-bar"
-                        style="outline-color:#000000; background-color:#ff0000"></div>
+    <div class="table">
+        <div class="board">
+            <div class="center">
+                <div class="community-chest-deck">
+                    <h2 class="label">Community Chest</h2>
+                    <div class="deck"></div>
                 </div>
-                <div id="interactions">Chance <br><i class="fas fa-question fa-2"></i></div>
-                <div id="houses">Indiana Ave<br>$220<div id="colour-bar"
-                        style="outline-color:#000000; background-color:#ff0000"></div>
-                </div>
-                <div id="houses">Illinois Ave<br>$240<div id="colour-bar"
-                        style="outline-color:#000000; background-color:#ff0000"></div>
-                </div>
-                <div id="interactions"><i class="fas fa-train"></i> B&amp;O Railroad<br>$200</div>
-                <div id="houses">Atlantic Ave<br>$260<div id="colour-bar"
-                        style="outline-color:#000000; background-color:#fffb00"></div>
-                </div>
-                <div id="houses">Ventnor Ave<br>$260<div id="colour-bar"
-                        style="outline-color:#000000; background-color:#fffb00"></div>
-                </div>
-                <div id="interactions"><i class="fas fa-water"></i> Water Works<br>$150</div>
-                <div id="houses">Marvin Gardens<br>$280<div id="colour-bar"
-                        style="outline-color:#000000; background-color:#fffb00"></div>
-                </div>
-                <div id="corners">Go To Jail <i class="fas fa-helicopter fa-2"></i></div>
-            </div>
-            <div id="left">
-                <div id="houses">St. Charles Place<br>$140<div id="colour-bar"
-                        style="outline-color:#000000; background-color:#a200ff"></div>
-                </div>
-                <div id="interactions"><i class="fas fa-lightbulb"></i> Electric Company<br>$150</div>
-                <div id="houses">States Ave<br>$140<div id="colour-bar"
-                        style="outline-color:#000000; background-color:#a200ff"></div>
-                </div>
-                <div id="houses">Virginia Ave<br>$160<div id="colour-bar"
-                        style="outline-color:#000000; background-color:#a200ff"></div>
-                </div>
-                <div id="interactions" style='font-size:8px'><i class="fas fa-train"></i> Pennsylvania Railroad<br>$200
-                </div>
-                <div id="houses">St. James Place<br>$180<div id="colour-bar"
-                        style="outline-color:#000000; background-color:#ffc400"></div>
-                </div>
-                <div id="interactions">Community Chest <i class="fas fa-charging-station fa-2"></i></div>
-                <div id="houses">Tennessee Ave<br>$180<div id="colour-bar"
-                        style="outline-color:#000000; background-color:#ffc400"></div>
-                </div>
-                <div id="houses">New York Ave<br>$200<div id="colour-bar"
-                        style="outline-color:#000000; background-color:#ffc400"></div>
+                <h1 class="title">MOPUTA</h1>
+                <div class="chance-deck">
+                    <h2 class="label">Chance</h2>
+                    <div class="deck"></div>
                 </div>
             </div>
-            <div id="bottom">
-                <div id="corners"><b><u>Go</u></b><br><b>Collect $200</b><br><i
-                        class="fas fa-long-arrow-alt-right fa-2"></i></div>
-                <div id="houses">Mediter-ranean Avenue<br>$60<div id="colour-bar"
-                        style="outline-color:#000000; background-color:#6e5231"></div>
+
+            <div class="space corner go">
+                <div class="container">
+                    <div class="instructions">Collect £200 as you pass</div>
+                    <div class="go-word">HOME</div>
                 </div>
-                <div id="interactions">Community Chest <i class="fas fa-charging-station fa-2"></i></div>
-                <div id="houses">Baltic Avenue<br>$60<div id="colour-bar"
-                        style="outline-color:#000000; background-color:#6e5231"></div>
-                </div>
-                <div id="interactions"><i class="fas fa-money-bill-wave fa-2"></i> Income Tax<br>(pay $200)</div>
-                <div id="interactions"><i class="fas fa-train"></i> Reading Railroad<br>$200</div>
-                <div id="houses">Oriental Avenue<br>$100<div id="colour-bar"
-                        style="outline-color:#000000; background-color:#5dcefa"></div>
-                </div>
-                <div id="interactions">Chance <br><i class="fas fa-question fa-2"></i></div>
-                <div id="houses">Vermont Avenue<br>$100<div id="colour-bar"
-                        style="outline-color:#000000; background-color:#5dcefa"></div>
-                </div>
-                <div id="houses">Connecticut Avenue<br>$120<div id="colour-bar"
-                        style="outline-color:#000000; background-color:#5dcefa"></div>
-                </div>
-                <div id="corners"><i class="fas fa-dice-three fa-2"></i><br>In Jail/Just Visiting</div>
+                <div class="arrow fa fa-long-arrow-left"></div>
             </div>
-            <div id="center">
-                <div id="logo"></div>
-                <div id="chance">
-                    <div id="innerchance">Chance<br><br><i class="fas fa-question fa-2"></i><br><br></div>
+
+            <div class="row horizontal-row bottom-row">
+                <div class="space property">
+                    <div class="container">
+                        <div class="color-bar light-blue"></div>
+                        <div class="name">Bayer</div>
+                        <div class="price">£120</div>
+                    </div>
                 </div>
-                <div id="cchest">
-                    <div id="innerchest">Community<br>Chest <br><br> <i class="fas fa-charging-station fa-2"></i></div>
+                <div class="space property">
+                    <div class="container">
+                        <div class="color-bar light-blue"></div>
+                        <div class="name">Nocil</div>
+                        <div class="price">£100</div>
+                    </div>
+                </div>
+                <div class="space chance">
+                    <div class="container">
+                        <div class="name">Chance</div>
+                        <i class="drawing fa fa-question"></i>
+                    </div>
+                </div>
+                <div class="space property">
+                    <div class="container">
+                        <div class="color-bar light-blue"></div>
+                        <div class="name">St. John</div>
+                        <div class="price">£100</div>
+                    </div>
+                </div>
+                <div class="space railroad">
+                    <div class="container">
+                        <div class="name long-railroad">Jal Darshan</div>
+                        <i class="drawing fa fa-building"></i>
+                        <div class="price">£200</div>
+                    </div>
+                </div>
+                <div class="space fee income-tax">
+                    <div class="container">
+                        <div class="name">Income Tax</div>
+                        <div class="diamond"></div>
+                        <div class="instructions">Pay $200</div>
+                    </div>
+                </div>
+                <div class="space property">
+                    <div class="container">
+                        <div class="color-bar dark-purple"></div>
+                        <div class="name">Wakatobi</div>
+                        <div class="price">£60</div>
+                    </div>
+                </div>
+                <div class="space community-chest">
+                    <div class="container">
+                        <div class="name">Community Chest</div>
+                        <i class="drawing fa fa-key"></i>
+                    </div>
+                </div>
+                <div class="space property">
+                    <div class="container">
+                        <div class="color-bar dark-purple"></div>
+                        <div class="name">Bunaken</div>
+                        <div class="price">£60</div>
+                    </div>
                 </div>
             </div>
-            <div id="right">
-                <div id="houses">Pacific Avenue<br>$300<div id="colour-bar"
-                        style="outline-color:#000000; background-color:#2c812c"></div>
+
+            <div class="space corner jail">
+                <div class="just">Just</div>
+                <div class="drawing">
+                    <div class="container">
+                        <div class="name">In</div>
+                        <div class="window">
+                            <div class="bar"></div>
+                            <div class="bar"></div>
+                            <div class="bar"></div>
+                            <i class="person fa fa-frown-o"></i>
+                        </div>
+                        <div class="name">Jail</div>
+                    </div>
                 </div>
-                <div id="houses">North Carolina Avenue<br>$300<div id="colour-bar"
-                        style="outline-color:#000000; background-color:#2c812c"></div>
+                <div class="visiting">Visiting</div>
+            </div>
+
+            <div class="row vertical-row left-row">
+                <div class="space property">
+                    <div class="container">
+                        <div class="color-bar orange"></div>
+                        <div class="name">DGC</div>
+                        <div class="price">£200</div>
+                    </div>
                 </div>
-                <div id="interactions">Community Chest <i class="fas fa-charging-station fa-2"></i></div>
-                <div id="houses">Pennsylvania Avenue<br>$320<div id="colour-bar"
-                        style="outline-color:#000000; background-color:#2c812c"></div>
+                <div class="space property">
+                    <div class="container">
+                        <div class="color-bar orange"></div>
+                        <div class="name">Lado Sarai</div>
+                        <div class="price">£180</div>
+                    </div>
                 </div>
-                <div id="interactions">Short Line<br>$200 <i class="fas fa-ruler fa-2"></i></div>
-                <div id="interactions">Chance <br><i class="fas fa-question fa-2"></i></div>
-                <div id="interactions">Park Place<br>$350<div id="colour-bar"
-                        style="outline-color:#000000; background-color:#0026ff"></div>
+                <div class="space community-chest">
+                    <div class="container">
+                        <div class="name">Community Chest</div>
+                        <i class="drawing fa fa-key"></i>
+                    </div>
                 </div>
-                <div id="interactions"><i class="fas fa-money-bill fa-2"></i> Luxury Tax<br>(pay $200)</div>
-                <div id="interactions">Boardwalk<br>$400<div id="colour-bar"
-                        style="outline-color:#000000; background-color:#0026ff"></div>
+                <div class="space property">
+                    <div class="container">
+                        <div class="color-bar orange"></div>
+                        <div class="name">Jaypee Greens</div>
+                        <div class="price">£180</div>
+                    </div>
+                </div>
+                <div class="space railroad">
+                    <div class="container">
+                        <div class="name">Landmark</div>
+                        <i class="drawing fa fa-building"></i>
+                        <div class="price">£200</div>
+                    </div>
+                </div>
+                <div class="space property">
+                    <div class="container">
+                        <div class="color-bar purple"></div>
+                        <div class="name">BPGC</div>
+                        <div class="price">£160</div>
+                    </div>
+                </div>
+                <div class="space property">
+                    <div class="container">
+                        <div class="color-bar purple"></div>
+                        <div class="name">Willingdon</div>
+                        <div class="price">£140</div>
+                    </div>
+                </div>
+                <div class="space utility electric-company">
+                    <div class="container">
+                        <div class="name">JP Morgan</div>
+                        <i class="drawing fa fa-university"></i>
+                        <div class="price">£150</div>
+                    </div>
+                </div>
+                <div class="space property">
+                    <div class="container">
+                        <div class="color-bar purple"></div>
+                        <div class="name">Oxford</div>
+                        <div class="price">£140</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="space corner free-parking">
+                <div class="container">
+                    <div class="name">Free</div>
+                    <i class="drawing fa fa-car"></i>
+                    <div class="name">Parking</div>
+                </div>
+            </div>
+
+            <div class="row horizontal-row top-row">
+                <div class="space property">
+                    <div class="container">
+                        <div class="color-bar red"></div>
+                        <div class="name">Saayba</div>
+                        <div class="price">£220</div>
+                    </div>
+                </div>
+                <div class="space chance">
+                    <div class="container">
+                        <div class="name">Chance</div>
+                        <i class="drawing fa fa-question blue"></i>
+                    </div>
+                </div>
+                <div class="space property">
+                    <div class="container">
+                        <div class="color-bar red"></div>
+                        <div class="name">Bombay Canteen</div>
+                        <div class="price">£220</div>
+                    </div>
+                </div>
+                <div class="space property">
+                    <div class="container">
+                        <div class="color-bar red"></div>
+                        <div class="name long-name">Oh! Calcutta</div>
+                        <div class="price">£240</div>
+                    </div>
+                </div>
+                <div class="space railroad">
+                    <div class="container">
+                        <div class="name">Kalpataru</div>
+                        <i class="drawing fa fa-building"></i>
+                        <div class="price">£200</div>
+                    </div>
+                </div>
+                <div class="space property">
+                    <div class="container">
+                        <div class="color-bar yellow"></div>
+                        <div class="name">DD's Flat</div>
+                        <div class="price">£260</div>
+                    </div>
+                </div>
+                <div class="space property">
+                    <div class="container">
+                        <div class="color-bar yellow"></div>
+                        <div class="name">Joy's Flat</div>
+                        <div class="price">£260</div>
+                    </div>
+                </div>
+                <div class="space utility waterworks">
+                    <div class="container">
+                        <div class="name">Stan C</div>
+                        <i class="drawing fa fa-university"></i>
+                        <div class="price">£150</div>
+                    </div>
+                </div>
+                <div class="space property">
+                    <div class="container">
+                        <div class="color-bar yellow"></div>
+                        <div class="name long-name">Vishal's Flat</div>
+                        <div class="price">£280</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="space corner go-to-jail">
+                <div class="container">
+                    <div class="name">Go To</div>
+                    <i class="drawing fa fa-gavel"></i>
+                    <div class="name">Jail</div>
+                </div>
+            </div>
+
+            <div class="row vertical-row right-row">
+                <div class="space property">
+                    <div class="container">
+                        <div class="color-bar green"></div>
+                        <div class="name">Raja Ampat</div>
+                        <div class="price">£300</div>
+                    </div>
+                </div>
+                <div class="space property">
+                    <div class="container">
+                        <div class="color-bar green"></div>
+                        <div class="name">Galápagos</div>
+                        <div class="price">£300</div>
+                    </div>
+                </div>
+                <div class="space community-chest">
+                    <div class="container">
+                        <div class="name">Community Chest</div>
+                        <i class="drawing fa fa-key"></i>
+                    </div>
+                </div>
+                <div class="space property">
+                    <div class="container">
+                        <div class="color-bar green"></div>
+                        <div class="name two-line-name">Great Barrier Reef</div>
+                        <div class="price">£320</div>
+                    </div>
+                </div>
+                <div class="space railroad">
+                    <div class="container">
+                        <div class="name">Sunteck </div>
+                        <i class="drawing fa fa-building"></i>
+                        <div class="price">£200</div>
+                    </div>
+                </div>
+                <div class="space chance">
+                    <div class="container">
+                        <div class="name">Chance</div>
+                        <i class="drawing fa fa-question"></i>
+                    </div>
+                </div>
+                <div class="space property">
+                    <div class="container">
+                        <div class="color-bar dark-blue"></div>
+                        <div class="name">Aalis</div>
+                        <div class="price">£350</div>
+                    </div>
+                </div>
+                <div class="space fee luxury-tax">
+                    <div class="container">
+                        <div class="name">GST</div>
+                        <div class="drawing fa fa-database"></div>
+                        <div class="instructions">Pay £200</div>
+                    </div>
+                </div>
+                <div class="space property">
+                    <div class="container">
+                        <div class="color-bar dark-blue"></div>
+                        <div class="name">64A</div>
+                        <div class="price">£400</div>
+                    </div>
                 </div>
             </div>
         </div>
