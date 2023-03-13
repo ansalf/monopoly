@@ -1,0 +1,192 @@
+#boardgame {
+    position: fixed;
+    left: 33.3%;
+    right: 33.3%;
+    top: 20px;
+    width: 997px;
+    height: 997px;
+}
+
+#board {
+    height: inherit;
+    width: inherit;
+    background-color: #ecfcf4;
+}
+
+#top {
+    display: block;
+    direction: ltr;
+    height: 60px;
+}
+
+#left {
+    display: flex;
+    height: 60px;
+    width: 476px;
+    -webkit-transform: rotate(-90deg);
+    -moz-transform: rotate(-90deg);
+    -o-transform: rotate(-90deg);
+    -ms-transform: rotate(-90deg);
+    transform: rotate(-90deg);
+    position: absolute;
+    left: -208px;
+    top: 268px;
+}
+
+#bottom {
+    display: flex;
+    direction: ltr;
+    height: 60px;
+    position: absolute;
+    bottom: 0px;
+    -webkit-transform: rotate(180deg);
+    -moz-transform: rotate(180deg);
+    -o-transform: rotate(180deg);
+    -ms-transform: rotate(180deg);
+    transform: rotate(180deg);
+}
+
+#right {
+    display: flex;
+    direction: ltr;
+    height: 60px;
+    -webkit-transform: rotate(90deg);
+    -moz-transform: rotate(90deg);
+    -o-transform: rotate(90deg);
+    -ms-transform: rotate(90deg);
+    transform: rotate(90deg);
+    position: absolute;
+    right: -208px;
+    top: 268px;
+}
+
+#logo {
+    display: block;
+    height: 152px;
+    width: 400px;
+    position: absolute;
+    left: 90px;
+    top: 185px;
+    background-image: url("https://upload.wikimedia.org/wikipedia/en/f/f9/Monopoly_pack_logo.png");
+    -webkit-transform: rotate(-45deg);
+    -moz-transform: rotate(-45deg);
+    -o-transform: rotate(-45deg);
+    -ms-transform: rotate(-45deg);
+    transform: rotate(-45deg);
+}
+
+#chance {
+    display: block;
+    height: 125px;
+    width: 90px;
+    box-shadow: 2px 2px #332f66;
+    -webkit-transform: rotate(45deg);
+    -moz-transform: rotate(45deg);
+    -o-transform: rotate(45deg);
+    -ms-transform: rotate(45deg);
+    transform: rotate(45deg);
+    position: absolute;
+    top: 110px;
+    left: 140px;
+    background-color: #caad50;
+}
+
+#innerchance {
+    display: table-cell;
+    height: 105px;
+    width: 70px;
+    outline-style: solid;
+    outline-color: #000000;
+    outline-width: 4px;
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    background-color: #caad50;
+    text-align: center;
+    vertical-align: middle;
+}
+
+#cchest {
+    display: block;
+    height: 125px;
+    width: 90px;
+    box-shadow: -2px -2px #332f66;
+    -webkit-transform: rotate(-135deg);
+    -moz-transform: rotate(-135deg);
+    -o-transform: rotate(-135deg);
+    -ms-transform: rotate(-135deg);
+    transform: rotate(-135deg);
+    position: absolute;
+    bottom: 150px;
+    right: 150px;
+    background-color: #ca9ca9;
+}
+
+#innerchest {
+    display: table-cell;
+    height: 105px;
+    width: 70px;
+    outline-style: solid;
+    outline-color: #000000;
+    outline-width: 4px;
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    font-size: 14px;
+    background-color: #ca9ca9;
+    text-align: center;
+    vertical-align: middle;
+}
+
+#corners {
+    display: table-cell;
+    filter: brightness(100%);
+    width: 60px;
+    height: 60px;
+    outline-style: solid;
+    outline-color: #000000;
+    outline-width: 1px;
+    text-align: center;
+    font-size: 10px;
+    color: #000000;
+    vertical-align: middle;
+}
+
+#houses {
+    display: table-cell;
+    filter: opacity(1);
+    width: 53px;
+    height: 60px;
+    outline-style: solid;
+    outline-color: #000000;
+    outline-width: 1px;
+    text-align: center;
+    font-size: 10px;
+    color: #000000;
+    vertical-align: middle;
+}
+
+#colour-bar {
+    filter: opacity(1);
+    height: 10px;
+    outline-style: solid;
+    outline-width: 1px;
+    position: absolute;
+    bottom: 1px;
+    left: 1px;
+    right: 1px;
+}
+
+#interactions {
+    display: table-cell;
+    filter: opacity(1);
+    width: 53px;
+    height: 60px;
+    outline-style: solid;
+    outline-color: #000000;
+    outline-width: 1px;
+    text-align: center;
+    font-size: 10px;
+    color: #000000;
+    vertical-align: middle;
+}
