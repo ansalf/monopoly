@@ -33,6 +33,7 @@
                 <div class="arrow fa fa-long-arrow-left"></div>
             </div>
 
+
             <div class="row horizontal-row bottom-row">
                 <div class="space property">
                     <div class="container">
@@ -259,7 +260,6 @@
                     <div class="name">Jail</div>
                 </div>
             </div>
-
             <div class="row vertical-row right-row">
                 <div class="space property">
                     <div class="container">

@@ -1,7 +1,8 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-
+use App\Http\Controllers\RegisterController;
+use App\Http\Controllers\LoginController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -21,14 +22,19 @@ Route::get('/board', function () {
     return view('board');
 });
 
-Route::get('/login', function () {
-    return view('login');
-});
+// Login Routes
+Route::get('/login', [LoginController::class, 'login'])->name('login');
+Route::post('/login', [LoginController::class, 'authenticate'])->name('authenticate');
+Route::post('/logout', [LoginController::class, 'logout'])->name('logout');
 
-Route::get('/register', function () {
-    return view('register');
-});
+// Register Routes
+Route::get('/register', [RegisterController::class, 'register']);
+Route::post('/register', [RegisterController::class, 'store'])->name('store');
 
 Route::get('/dashboard', function () {
     return view('dashboard');
+});
+
+Route::get('/dice', function () {
+    return view('dice');
 });
