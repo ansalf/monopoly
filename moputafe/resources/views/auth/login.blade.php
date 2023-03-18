@@ -29,7 +29,7 @@
                     <input type="password" class="form-control" id="password" name="password" style="border-radius: 10px;" placeholder="Password" required>
                     <label for="password">Password</label>
                 </div>
-                <button class="w-100 btn btn-lg btn-secondary" type="submit" style="border-radius: 30px;">Login</button>
+                <button class="w-100 btn btn-lg btn-secondary" type="submit" style="border-radius: 30px;"><a href="/dashboard" style="color: white; text-decoration:none;">Login</button>
                 <hr class="my-4">
                 <div class="text-center">
                     <small class="text-muted text-center" >Not registered? <a href="/register">Register Now!</a></small>

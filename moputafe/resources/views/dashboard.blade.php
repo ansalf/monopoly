@@ -8,24 +8,50 @@
     <title>MOPUTA</title>
 </head>
 
+<style>
+    .button {
+        display: block;
+        width: 200px;
+        height: 50px;
+        margin: 0 auto;
+        margin-top: 50px;
+        border: none;
+        border-radius: 5px;
+        background-color: #f0f5f0;
+        color: #000000;
+        font-size: 24px;
+        font-weight: bold;
+        text-align: center;
+        line-height: 50px;
+        cursor: pointer;
+        box-shadow: 0px 0px 10px #000000;
+        transition: all 0.2s ease-in-out;
+    }
+
+    .button:hover {
+        transform: scale(1.1);
+        box-shadow: 0px 0px 20px #000000;
+    }
+
+    .button:active {
+        transform: scale(0.9);
+        box-shadow: 0px 0px 5px #000000;
+    }
+
+    body {
+        background-image: url(img/bg.png);
+        position: absolute;
+        margin-left: 880px;
+        margin-top: 800px;
+    }
+</style>
+</head>
+
 <body>
+
     <div class="container">
-        <img class="bg-bg" src="img/bg.png" alt="bg-dashboard" style="position: absolute;">
-        {{--  <div class="aset">
-            <img class="settings" src="img/setting.png" alt="settings" style="position: absolute; width:50px; height:50px; padding-top:25px; padding-left:1840px;">
-            <img class="email" src="img/email.png" alt="email" style="position: absolute; width:50px; height:50px; padding-top:25px; padding-left:1770px;">
-        </div>
-        <div class="icn">
-            <img class="star" src="img/star.png" alt="star" style="position: absolute; width:50px; height:50px; padding-top:25px; padding-left:1548px;">
-            <img class="gem" src="img/gem.png" alt="diamond" style="position: absolute; width:50px; height:50px; padding-top:25px; padding-left:1297px;">
-            <img class="user" src="img/user.png" alt="user" style="position: absolute; width:100px; height:100px; padding-top:25px; padding-left:30px;">
-        </div>
-        <div class="sidebar">
-            <img class="bag" src="img/backpack-2.png" alt="bag" style="position: absolute; width:100px; height:100px; padding-top:320px; padding-left:15px;">
-            <img class="add" src="img/add-friend.png" alt="add" style="position: absolute; width:100px; height:100px; padding-top:530px; padding-left:15px;">
-            <img class="shop" src="img/online-shopping.png" alt="shop" style="position: absolute; width:100px; height:100px; padding-top:750px; padding-left:15px;">
-        </div>
-    </div> --}}
+        <button class="button"><a href="/board" style="text-decoration: none; color:black;">Start Game</button>
+    </div>
 </body>
 
 </html>

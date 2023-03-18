@@ -5,7 +5,7 @@ html, body {
 }
 body {
   font-family: 'Raleway', sans-serif;
-  background: #E9F8DF;
+  background-image: url(img/bg.png);
   -webkit-font-smoothing: antialiased;
 }
 :focus {
@@ -29,7 +29,8 @@ h2 {
   margin: 0;
 }
 form {
-  margin: 35px 0;
+  margin-top: 50px;
+  
 }
 #inputs {
   height: 127px;

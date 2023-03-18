@@ -12,7 +12,7 @@
 
     <style>
         body {
-            background-color: #06b4c4;
+            background-image: url(img/bg.png);
             background-repeat: no-repeat;
         }
 
@@ -29,7 +29,6 @@
         <header>
             <nav class="navbar navbar-expand-lg navbar-light mt-4">
                 <div class="container-fluid">
-                    <h1 class="display-5 fw-bold">MOPUTA</h1>
 
                     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                         <span class="navbar-toggler-icon"></span>
@@ -41,7 +40,7 @@
                                 <a href="/" class="nav-link {{ Request::is('/') ? 'active' : '' }}">Home</a>
                             </li>
                             <li class="nav-item">
-                                <a href="/login" class="nav-link {{ Request::is('login') ? 'active' : '' }}">Login</a>
+                                <a href="/login" class="nav-link {{ Request::is('/login') ? 'active' : '' }}">Login</a>
                             </li>
 
                         </ul>
@@ -58,14 +57,6 @@
 
             </div>
         </main>
-
-        <footer class="footer mt-auto py-3">
-            <div class="container">
-                <div class="text-center">
-                    &copy; 2023 MOPUTA
-                </div>
-            </div>
-        </footer>
     </div>
 
     <!-- Option 1: Bootstrap Bundle with Popper -->

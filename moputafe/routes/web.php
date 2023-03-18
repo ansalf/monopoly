@@ -38,3 +38,7 @@ Route::get('/dashboard', function () {
 Route::get('/dice', function () {
     return view('dice');
 });
+
+Route::get('/settings', function () {
+    return view('settings');
+});
