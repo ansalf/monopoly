@@ -3,6 +3,8 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\RegisterController;
 use App\Http\Controllers\LoginController;
+use App\Http\Controllers\SettingsController;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -23,7 +25,7 @@ Route::get('/board', function () {
 });
 
 // Login Routes
-Route::get('/login', [LoginController::class, 'login'])->name('login');
+Route::get('/logout', [LoginController::class, 'login'])->name('login');
 Route::post('/login', [LoginController::class, 'authenticate'])->name('authenticate');
 Route::post('/logout', [LoginController::class, 'logout'])->name('logout');
 
@@ -42,3 +44,8 @@ Route::get('/dice', function () {
 Route::get('/settings', function () {
     return view('settings');
 });
+
+// Route Settingan
+Route::get('/settings', [SettingsController::class, 'index'])->name('settings.index');
+Route::post('/settings/save', [SettingsController::class, 'save'])->name('settings.save');
+
