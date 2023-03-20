@@ -4,7 +4,7 @@
 	<title>MOPUTA</title>
 	<link rel="stylesheet" type="text/css" href="css/settings.css">
 </head>
-<body style="background-image: url(img/bg_ijo.png);">
+<body style="background-image: url(img/bg.png);">
 	<h1>Moputa Game Settings</h1>
 	<form>
 		<label for="numPlayers">Number of Players:</label>

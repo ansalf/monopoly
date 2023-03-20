@@ -10,7 +10,7 @@
 {{-- Gae o file ss sambungno mbe iki --}}
     <style>
         body {
-            background-image: url({{ asset('img/bg_ijo.png') }});
+            background-image: url({{ asset('img/bg.png') }});
         }
 
         .container {

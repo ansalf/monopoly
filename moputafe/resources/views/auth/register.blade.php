@@ -3,7 +3,7 @@
 @section('container')
 <div class="container col-xl-7 col-xxl-5">
     <div class="row align-items-center py-5">
-        <h2 class="text-center mb-4">Register</h2>
+        <h2 class="text-center mb-4"style="padding-top: 150px">Register</h2>
         <div class="col-lg-10 mx-auto col-lg-5">
             <form action="{{ route('store') }}" method="POST" class="p-4 p-md-5 border rounded-3 bg-light" autocomplete="off">
                 @csrf

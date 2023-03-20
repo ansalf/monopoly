@@ -17,7 +17,7 @@
             </div>
         @endif
 
-        <h2 class="text-center mb-4">Login</h2>
+        <h2 class="text-center mb-4" style="padding-top:150px">Login</h2>
         <div class="col-lg-8 mx-auto col-lg-4">
             <form action="/login" method="POST" class="p-4 p-md-5 border rounded-3 bg-light" autocomplete="off">
                 @csrf

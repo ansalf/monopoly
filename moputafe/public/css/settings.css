@@ -7,12 +7,10 @@ body {
 
 h1 {
     text-align: center;
-    margin-top: 300px;
 }
 
 form {
     margin: 0 auto;
-    width: 50%;
 }
 
 label {
@@ -28,6 +26,7 @@ textarea {
     font-size: 16px;
     border: 1px solid #ccc;
     border-radius: 4px;
+    width: 300px;
 }
 
 input[type="submit"] {
@@ -40,5 +39,9 @@ input[type="submit"] {
 }
 
 input[type="submit"]:hover {
+    background-color: #45a049;
+}
+
+.container1{
     background-color: #45a049;
 }
