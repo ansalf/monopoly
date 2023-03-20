@@ -7,10 +7,20 @@
     <link rel="stylesheet" type="text/css" href="{{ asset('css/settings.css') }}">
     <title>Settings</title>
 
-{{-- Gae o file ss sambungno mbe iki --}}
     <style>
-        body {
-            background-image: url({{ asset('img/bg.png') }});
+        /* Set the video to cover the entire screen and play on loop */
+        #video-background {
+            position: fixed;
+            right: 0;
+            bottom: 0;
+            min-width: 100%;
+            min-height: 100%;
+            width: auto;
+            height: auto;
+            z-index: -1;
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-position: center center;
         }
 
         .container {
@@ -34,10 +44,14 @@
         }
     </style>
 
-k</head>
+</head>
 <body>
 
-    <div class="container">
+    <video autoplay muted loop id="video-background">
+        <source src="{{ asset('img/play_bg.mp4') }}" type="video/mp4">
+    </video>
+
+    <div class="banner">
         <form method="post" action="{{ route('settings.save') }}">
             <h1>Moputa Game Settings</h1>
             @if(session('success'))
